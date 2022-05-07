@@ -21,11 +21,10 @@ async function start() {
     window.addEventListener("resize", onResize);
     refreshLoading();
     try {
-        let [noms, markov] = await Promise.all([
-            loadJSON("noms.json", (p) => loadedNames = p.loaded / (p.total || 527807)),
-            loadJSON("markov.json", (p) => loadedMarkov = p.loaded / (p.total || 1760271))]);
+        let [noms] = await Promise.all([
+            loadJSON("noms.json", (p) => loadedNames = p.loaded / (p.total || 527807))]);
         cityNames = JSON.parse(noms);
-        markovData = JSON.parse(markov);
+        markovData = createMarkovData(cityNames);
     } catch (e) {
         console.error(e);
     }
