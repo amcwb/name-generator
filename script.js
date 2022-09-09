@@ -9,7 +9,7 @@ let result = document.querySelector("#result");
 start();
 
 function refreshLoading() {
-    result.innerText = "Chargement " + Math.round((loadedNames + loadedMarkov) * 50) + "%";
+    result.innerText = "Loading " + Math.round((loadedNames + loadedMarkov) * 50) + "%";
 }
 
 function onResize() {
